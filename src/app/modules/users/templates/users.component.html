@@ -1,0 +1,129 @@
+<app-navbar></app-navbar>
+<div class="p-4 sm:ml-64" style="padding-top: 100px;">
+
+  <app-user-list (userTypeEvent)="handleUserTypeEvent($event)"></app-user-list>
+
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-800 bg-opacity-50 p-6 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-6 w-full max-w-xl">
+      <h2 class="text-2xl font-bold mb-4">Gestionar Usuario</h2>
+      <div [formGroup]="UserForm" fxLayout="column" fxLayoutGap="16px">
+        <div fxFlex="auto" fxLayout="column">
+          <div>
+            <label
+              [ngClass]="!isTouchedOrDirtyField('name') ? '' : isFieldValid('name') ? lableInvalidClassValue : lableValidClassValue"
+              class="block mb-2 text-sm mt-4">
+              Nombre</label>
+            <input type="text"
+              [ngClass]="!isTouchedOrDirtyField('name') ? '' : isFieldValid('name') ? inputInvalidClassValue : inputValidClassValue"
+              class="border text-sm rounded-lg block w-full p-2.5" formControlName="name"
+              (input)="markFieldAsTouchedOrDirty('name')">
+            <ng-container *ngIf="isTouchedOrDirtyField('name')">
+              <ng-container *ngIf="isFieldValid('name')">
+                <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                  Username invalido!</p>
+              </ng-container>
+              <ng-container *ngIf="!isFieldValid('name')">
+                <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                    bien!</span>
+                  Username valido!</p>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div>
+            <label
+              [ngClass]="!isTouchedOrDirtyField('user') ? '' : isFieldValid('user') ? lableInvalidClassValue : lableValidClassValue"
+              class="block mb-2 text-sm mt-4">
+              Usuario</label>
+            <input type="text"
+              [ngClass]="!isTouchedOrDirtyField('user') ? '' : isFieldValid('user') ? inputInvalidClassValue : inputValidClassValue"
+              class="border text-sm rounded-lg block w-full p-2.5" formControlName="user"
+              (input)="markFieldAsTouchedOrDirty('user')">
+            <ng-container *ngIf="isTouchedOrDirtyField('user')">
+              <ng-container *ngIf="isFieldValid('user')">
+                <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                  Username invalido!</p>
+              </ng-container>
+              <ng-container *ngIf="!isFieldValid('user')">
+                <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                    bien!</span>
+                  Username valido!</p>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div>
+            <label
+              [ngClass]="!isTouchedOrDirtyField('email') ? '' : isFieldValid('email') ? lableInvalidClassValue : lableValidClassValue"
+              class="block mb-2 text-sm mt-4">
+              Correo electronico</label>
+            <input type="text"
+              [ngClass]="!isTouchedOrDirtyField('email') ? '' : isFieldValid('email') ? inputInvalidClassValue : inputValidClassValue"
+              class="border text-sm rounded-lg block w-full p-2.5" formControlName="email"
+              (input)="markFieldAsTouchedOrDirty('email')">
+            <ng-container *ngIf="isTouchedOrDirtyField('email')">
+              <ng-container *ngIf="isFieldValid('email')">
+                <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                  Username invalido!</p>
+              </ng-container>
+              <ng-container *ngIf="!isFieldValid('email')">
+                <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                    bien!</span>
+                  Username valido!</p>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <div class="w-full mt-4 mb-2">
+            <label for="options" class="block mb-2 text-sm mt-4">Rol</label>
+            <select id="options" name="options" formControlName="role"
+              class="mt-1 block w-full pl-3 pr-10 py-2 text-base border focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+              <option value="admin" class="bg-gray-100 text-gray-900 hover:bg-gray-200 py-2">Admin</option>
+              <option value="user" class="bg-gray-100 text-gray-900 hover:bg-gray-200 py-2">Usuario</option>
+            </select>
+          </div>          
+
+          <div>
+            <label
+              [ngClass]="!isTouchedOrDirtyField('password') ? '' : isFieldValid('password') ? lableInvalidClassValue : lableValidClassValue"
+              class="block mb-2 text-sm  mt-4">
+              Contraseña</label>
+            <input type="text" type="password" id="password"
+              [ngClass]="!isTouchedOrDirtyField('password') ? '' : isFieldValid('password') ? inputInvalidClassValue : inputValidClassValue"
+              class="border text-sm rounded-lg block w-full p-2.5" formControlName="password"
+              (input)="markFieldAsTouchedOrDirty('password')">
+            <ng-container *ngIf="isTouchedOrDirtyField('password')">
+              <ng-container *ngIf="isFieldValid('password')">
+                <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                  Contraseña invalida!</p>
+              </ng-container>
+              <ng-container *ngIf="!isFieldValid('password')">
+                <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                    bien!</span>
+                  Contraseña valida!</p>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+
+        <ng-container *ngIf="!isEditTypeEvent()">
+          <button (click)="createUser()"
+            class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-6 w-full">Crear
+            usuario</button>
+        </ng-container>
+        <ng-container *ngIf="isEditTypeEvent()">
+          <button (click)="updateUser()"
+            class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-6 w-full">Editar
+            usuario</button>
+        </ng-container>
+      </div>
+      <button (click)="closeModal()"
+        class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">Cerrar
+        modal</button>
+    </div>
+  </div>
+
+  <div class="example-button-container mt-6" (click)="openModal()">
+    <button type="button"
+      class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Agregar
+      usuario</button>
+  </div>
+</div>

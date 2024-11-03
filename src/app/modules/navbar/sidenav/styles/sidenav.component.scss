@@ -1,0 +1,29 @@
+.sidenav{
+    background-color: #1a202e !important;
+    color: rgb(238, 238, 238);
+    height: 100%;
+}
+
+.alert-notification{
+    background-color: rgba(13, 72, 161, 0.644);
+}
+
+.logo{
+    height: 55px;
+    margin-left: -10px;
+    margin-right: -8px;
+}
+
+@media screen and (max-width: 1050px) {
+    span{
+        display: none;
+    }
+
+    .alert-notification{
+        display: none;
+    }
+
+    .sidenav{
+        width: 65px;
+    }
+}

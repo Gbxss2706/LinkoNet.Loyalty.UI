@@ -1,0 +1,70 @@
+<div class="w-full h-full gradient" fxLayout="column" fxLayoutAlign="center center">
+    <div class="card overflow-hidden w-full max-w-sm bg-white" style="background-color: #1a2541;">
+        <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
+            <div class="fill-current text-center">
+                <img class="w-24" src="assets/img/logo_loyalty_crop.png">
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <h2 class="title m-0" style="color: white;">¡Bienvenido!</h2>
+            <h4 class="body-2 text-secondary m-0" style="color: white;">Ingresa tus crendiciales para acceder</h4>
+        </div>
+
+        <div [formGroup]="loginForm" class="p-6" fxLayout="column" fxLayoutGap="16px">
+            <div fxFlex="auto" fxLayout="column">
+                <div>
+                    <label
+                        [ngClass]="!isTouchedOrDirtyField('email') ? '' : isFieldValid('email') ? lableInvalidClassValue : lableValidClassValue"
+                        class="block mb-2 text-sm text-white">
+                        Usuario o correo electronico</label>
+                    <input type="text"
+                        [ngClass]="!isTouchedOrDirtyField('email') ? '' : isFieldValid('email') ? inputInvalidClassValue : inputValidClassValue"
+                        class="border text-sm rounded-lg block w-full p-2.5" formControlName="email"
+                        (input)="markFieldAsTouchedOrDirty('email')">
+                    <ng-container *ngIf="isTouchedOrDirtyField('email')">
+                        <ng-container *ngIf="isFieldValid('email')">
+                            <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                                Usuario invalido!</p>
+                        </ng-container>
+                        <ng-container *ngIf="!isFieldValid('email')">
+                            <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                                    bien!</span>
+                                Usuario valido!</p>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div>
+                    <label
+                        [ngClass]="!isTouchedOrDirtyField('password') ? '' : isFieldValid('password') ? lableInvalidClassValue : lableValidClassValue"
+                        class="block mb-2 text-sm text-white mt-4">
+                        Contraseña</label>
+                    <input type="text" type="password" id="password"
+                        [ngClass]="!isTouchedOrDirtyField('password') ? '' : isFieldValid('password') ? inputInvalidClassValue : inputValidClassValue"
+                        class="border text-sm rounded-lg block w-full p-2.5" formControlName="password"
+                        (input)="markFieldAsTouchedOrDirty('password')">
+                    <ng-container *ngIf="isTouchedOrDirtyField('password')">
+                        <ng-container *ngIf="isFieldValid('password')">
+                            <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                                Contraseña invalida!</p>
+                        </ng-container>
+                        <ng-container *ngIf="!isFieldValid('password')">
+                            <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                                    bien!</span>
+                                Contraseña valida!</p>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+
+            <button (click)="sendLoginForm()" color="primary" mat-raised-button type="button" class="mt-4">
+                Ingresar
+            </button>
+
+            <p class="text-secondary text-center">
+                <a [routerLink]="['/login/forgot-password']" class="caption" style="color: white;">¿Olvidaste la
+                    contraseña?</a>
+            </p>
+        </div>
+    </div>
+</div>

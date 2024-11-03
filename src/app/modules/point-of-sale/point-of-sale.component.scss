@@ -1,0 +1,20 @@
+.custom-dialog-container {
+    width: 800px !important; /* Puedes ajustar este valor según tus necesidades */
+}
+
+
+@media screen and (max-width: 1050px) {
+    .main-container {
+        display: block;
+    }
+    .pos-container{
+        margin-left: 60px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .pos-container{
+        margin-left: 10px;
+    }
+}
+

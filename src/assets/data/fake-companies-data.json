@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "name": "Panaderia",
+        "nit": "123456789",
+        "banner": "assets/img/demo/bak.jpg",
+        "logo": "assets/img/postre.png",
+        "description": "Descripción de la Empresa",
+        "clientsQuantity": 1500
+    },
+    {
+        "id": 2,
+        "name": "Joyeria",
+        "nit": "987654321",
+        "banner": "assets/img/demo/jew.jpg",
+        "logo": "assets/img/desc.png",
+        "description": "Descripción de la Empresa",
+        "clientsQuantity": 2300
+    },
+    {
+        "id": 3,
+        "name": "Barberia",
+        "nit": "456789123",
+        "banner": "assets/img/demo/bar.jpg",
+        "logo": "assets/img/corte.png",
+        "description": "Descripción de la Empresa",
+        "clientsQuantity": 1800
+    }
+]

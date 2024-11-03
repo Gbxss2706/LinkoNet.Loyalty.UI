@@ -1,0 +1,10 @@
+<div *ngIf="showDialog" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center" style="z-index: 9999;">
+    <div class="bg-white rounded-lg shadow-lg w-96 p-5">
+        <h2 class="text-xl font-semibold text-red-600">Error!</h2>
+        <p class="mt-2 text-gray-600">{{ errorMessage }}</p>
+        <div class="mt-4 flex justify-end">
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                (click)="closeDialog()">Cerrar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+<app-navbar></app-navbar>
+<div class="sm:ml-64 px-5" style="padding-top: 100px;" *ngIf="pointOfSale">
+  <div class="grid grid-cols-3 gap-4 mb-4">
+    <div class="flex rounded w-full bg-gray-50 dark:bg-gray-800">
+      <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+        <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse w-full">
+          <div>
+            <img class="w-24 h-24" [src]="getMainImg()" alt="Bonnie image" />
+          </div>
+          <div class="flex flex-col items-baseline mt-4">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{pointOfSale.name}}
+            </h5>
+            <span class="text-sm text-gray-500 dark:text-gray-400"></span>
+            <div class="flex mt-4 md:mt-6">
+              <span
+                class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{pointOfSale.state
+                | statePipe }} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="justify-center rounded w-full bg-gray-50 h-28 dark:bg-gray-800 grid-profile">
+      <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Información general
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{pointOfSale.description}}</p>
+        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{pointOfSale.address}}</p>
+      </div>
+    </div>
+    <div class="flex rounded w-full bg-gray-50 dark:bg-gray-800">
+      <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+        <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse w-full">
+          <div class="flex flex-col items-baseline mt-4 w-full">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Administrador</h5>
+            <button (click)="openModal()"
+              class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-6 w-full">Asociar
+              usuario</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex rounded w-full bg-gray-50 dark:bg-gray-800 mt-8">
+      <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Información de contacto
+          </h5>
+        </a>
+        <a href="mailto:"
+          class="inline-flex font-medium items-center text-blue-600 hover:underline">{{pointOfSale.email}}
+          <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
+          </svg>
+        </a>
+        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{pointOfSale.telephone}}</p>
+
+      </div>
+    </div>
+
+    <div class="flex rounded w-full bg-gray-50 dark:bg-gray-800 mt-8">
+      <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Horario de atención
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{pointOfSale.schedule}}</p>
+      </div>
+    </div>
+
+    <div class="flex rounded w-full bg-gray-50 dark:bg-gray-800">
+      <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+        <div id="qr-code">
+          <qrcode [imageSrc]="imgSrc" [qrdata]="qrData" [width]="280" [colorDark]="'#000000'" [colorLight]="'#ffffff'"
+            [errorCorrectionLevel]="'H'"></qrcode>
+        </div>
+        <button (click)="exportQrCode()"
+          class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">Exportar
+          QR</button>
+      </div>
+    </div>
+
+    <div class="flex rounded w-full bg-gray-50 dark:bg-gray-800" style="height: 30%;">
+      <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+        <a >
+          <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Formulario de registro
+          </h5>
+        </a>
+        <a href="{{qrData}}"
+        class="inline-flex font-medium items-center text-blue-600 hover:underline">{{pointOfSale.identificationURL}}
+        <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 18 18">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
+        </svg>
+      </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-800 bg-opacity-50 p-6 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-6 w-full max-w-xl">
+      <h2 class="text-2xl font-bold mb-4">Asociar Usuario</h2>
+      <app-user-list [typeEventValue]="getAssociatePOSTypeEvent()" [POSId]="pointOfSale.pointOfSaleId"></app-user-list>
+      <button (click)="closeModal()"
+        class="text-white bg-gradient-to-r from-purple-500 mt-4 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">Cerrar
+        modal</button>
+    </div>
+  </div>
+</div>

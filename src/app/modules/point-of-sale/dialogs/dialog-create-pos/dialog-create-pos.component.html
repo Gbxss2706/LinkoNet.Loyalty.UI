@@ -1,0 +1,162 @@
+<h2 mat-dialog-title>Crear punto de venta</h2>
+<form [formGroup]="pointOfSaleForm">
+    <mat-stepper orientation="vertical">
+        <mat-step>
+            <ng-template matStepLabel>Información general</ng-template>
+            <ng-template matStepContent>
+                <div fxLayout="row" style="padding: 10px;">
+                    <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px" style="margin-top: 20px;">
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Nombre</mat-label>
+                            <input formControlName="name" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('name')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>E-mail</mat-label>
+                            <input formControlName="email" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('email')!.hasError('required')">We need a password to
+                                log you
+                                in</mat-error>
+                            <mat-error *ngIf="pointOfSaleForm.get('email')!.hasError('email')">We need a valid email to
+                                log you</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>NIT</mat-label>
+                            <input formControlName="nit" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('nit')!.hasError('required')">We need an email address
+                                to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Dirección</mat-label>
+                            <input formControlName="address" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('address')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px" style="margin-top: 20px;">
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Telefono</mat-label>
+                            <input formControlName="telephone" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('telephone')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Descripción</mat-label>
+                            <input formControlName="description" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('description')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Horario</mat-label>
+                            <input formControlName="schedule" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('schedule')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Estado</mat-label>
+                            <input formControlName="state" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('state')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button mat-button matStepperNext mat-raised-button color="primary">Siguiente</button>
+            </ng-template>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Reglas de negocio</ng-template>
+            <ng-template matStepContent>
+                <div fxLayout="row" style="padding: 10px;" formGroupName="businessRules">
+                    <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px" style="margin-top: 20px;">
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Nombre de regla</mat-label>
+                            <input formControlName="name" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('businessRules')?.get('name')!.hasError('required')">We need an email
+                                address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Descripción</mat-label>
+                            <input formControlName="description" matInput required>
+                            <mat-error *ngIf="pointOfSaleForm.get('businessRules')?.get('description')!.hasError('required')">We need a
+                                password to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Cantidad máxima de clientes globales</mat-label>
+                            <input formControlName="maxQuantityClientsGlobal" matInput required>
+                            <mat-error
+                                *ngIf="pointOfSaleForm.get('businessRules')?.get('maxQuantityClientsGlobal')!.hasError('required')">We
+                                need an email address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px" style="margin-top: 20px;">
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Cantidad máxima de clientes por mes</mat-label>
+                            <input formControlName="maxQuantityClientsByMonth" matInput required>
+                            <mat-error
+                                *ngIf="pointOfSaleForm.get('businessRules')?.get('maxQuantityClientsByMonth')!.hasError('required')">We
+                                need an email address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Descripción</mat-label>
+                            <input formControlName="maxQuantityCampaignsGlobal" matInput required>
+                            <mat-error
+                                *ngIf="pointOfSaleForm.get('businessRules')?.get('maxQuantityCampaignsGlobal')!.hasError('required')">We
+                                need an email address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="grow">
+                            <mat-label>Horario</mat-label>
+                            <input formControlName="maxQuantityCampaignsByMonth" matInput required>
+                            <mat-error
+                                *ngIf="pointOfSaleForm.get('businessRules')?.get('maxQuantityCampaignsByMonth')!.hasError('required')">We
+                                need an email address to log you
+                                in</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button mat-button matStepperPrevious mat-raised-button color="primary"
+                    style="margin-right: 5px;">Anterior</button>
+                <button mat-button matStepperNext mat-raised-button color="primary">Siguiente</button>
+            </ng-template>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Multimedia</ng-template>
+            <div fxLayout="row" style="padding: 10px;" formGroupName="logo">
+                <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px" style="margin-right: 20px;">
+                    <label class="custom-label" for="user_avatar">Upload file</label>
+                    <input class="custom-input" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                </div>
+                <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px" style="margin-top: 20px;">
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>Descripción</mat-label>
+                        <input formControlName="description" matInput required>
+                        <mat-error
+                            *ngIf="pointOfSaleForm.get('logo')?.get('description')!.hasError('required')">We
+                            need an email address to log you
+                            in</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-button matStepperPrevious mat-raised-button color="primary"
+                style="margin-right: 5px;">Anterior</button>
+            <button mat-button mat-raised-button color="primary" (click)="onSubmit()"
+                style="margin-right: 5px;">Crear</button>
+
+        </mat-step>
+    </mat-stepper>
+</form>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

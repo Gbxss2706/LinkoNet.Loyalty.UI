@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="p-4 custom:ml-64 sidenav" style="padding-top: 100px;">
+    <div class="flex items-center justify-center w-full mb-4 rounded bg-gray-50 dark:bg-gray-800">
+        <app-recent-clients class="w-full"></app-recent-clients>
+    </div>
+    <div class="grid mdcustom:grid-cols-3 gap-4 mb-4">
+        <div class="flex items-center justify-center w-full rounded bg-gray-50 dark:bg-gray-800 h-auto flex-grow">
+            <app-pos-chart class="w-full h-full"></app-pos-chart>
+        </div>
+        <div class="flex items-center justify-center w-full rounded bg-gray-50 dark:bg-gray-800 h-auto flex-grow">
+            <app-registers-chart class="w-full h-full"></app-registers-chart>
+        </div>
+        <div class="flex items-center justify-center w-full rounded bg-gray-50 dark:bg-gray-800 h-auto flex-grow">
+            <app-aux-chart class="w-full h-full"></app-aux-chart>
+        </div>
+    </div>
+
+    <div class="grid-item-second-row grid-item">
+        <app-user-chart class="w-full"></app-user-chart>
+    </div>
+</div>

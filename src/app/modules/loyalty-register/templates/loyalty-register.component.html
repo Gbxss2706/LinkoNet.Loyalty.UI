@@ -1,0 +1,131 @@
+<section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
+  <div class="container h-full p-10">
+    <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
+      <div class="w-full">
+        <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+          <div class="flex flex-wrap">
+            <div class="px-4 md:px-0 lg:w-6/12 login-container">
+              <form [formGroup]="registerForm" class="w-full">
+                <div class="mx-6 p-12 login-inside">
+                  <div class="text-center mx-auto">
+                    <div class="flex justify-center">
+                      <ng-container *ngIf="selectedPOS?.logo">
+                        <img #imageElement [src]="getMainImg()" alt="Company Image" class="rounded-lg"
+                          style="width: 100px; max-height: 30vh; object-fit: contain;"
+                          (load)="extractColors(imageElement)">
+                      </ng-container>
+                      <ng-container *ngIf="!selectedPOS?.logo">
+                        <h4 class="mb-6 text-xl font-semibold">
+                          {{selectedPOS?.name}}
+                        </h4>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div class="p-6 flex flex-col gap-4 login-inside">
+                    <div>
+                      <label
+                        [ngClass]="!isTouchedOrDirtyField('name') ? '' : isFieldValid('name') ? lableInvalidClassValue : lableValidClassValue"
+                        class="block mb-2 text-sm font-medium">
+                        Nombre</label>
+                      <input type="text"
+                        [ngClass]="!isTouchedOrDirtyField('name') ? '' : isFieldValid('name') ? inputInvalidClassValue : inputValidClassValue"
+                        class="border text-sm rounded-lg block w-full p-2.5" placeholder="Ex. Jose"
+                        formControlName="name" (input)="markFieldAsTouchedOrDirty('name')">
+                      <ng-container *ngIf="isTouchedOrDirtyField('name')">
+                        <ng-container *ngIf="isFieldValid('name')">
+                          <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                            Nombre invalido!</p>
+                        </ng-container>
+                        <ng-container *ngIf="!isFieldValid('name')">
+                          <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                              bien!</span>
+                            Nombre valido!</p>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                    <div>
+                      <label
+                        [ngClass]="!isTouchedOrDirtyField('phoneNumber') ? '' : isFieldValid('phoneNumber') ? lableInvalidClassValue : lableValidClassValue"
+                        class="block mb-2 text-sm font-medium">
+                        Telefono</label>
+                      <input type="text"
+                        [ngClass]="!isTouchedOrDirtyField('phoneNumber') ? '' : isFieldValid('phoneNumber') ? inputInvalidClassValue : inputValidClassValue"
+                        class="border text-sm rounded-lg block w-full p-2.5" placeholder="Ex. 3154447XXXX"
+                        formControlName="phoneNumber" (input)="markFieldAsTouchedOrDirty('phoneNumber')">
+                      <ng-container *ngIf="isTouchedOrDirtyField('phoneNumber')">
+                        <ng-container *ngIf="isFieldValid('phoneNumber')">
+                          <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                            Telefono invalido!</p>
+                        </ng-container>
+                        <ng-container *ngIf="!isFieldValid('phoneNumber')">
+                          <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                              bien!</span>
+                            Telefono valido!</p>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                    <div>
+                      <label
+                        [ngClass]="!isTouchedOrDirtyField('email') ? '' : isFieldValid('email') ? lableInvalidClassValue : lableValidClassValue"
+                        class="block mb-2 text-sm font-medium">
+                        Email</label>
+                      <input type="text"
+                        [ngClass]="!isTouchedOrDirtyField('email') ? '' : isFieldValid('email') ? inputInvalidClassValue : inputValidClassValue"
+                        class="border text-sm rounded-lg block w-full p-2.5" placeholder="Ex. email@superrito.com"
+                        formControlName="email" (input)="markFieldAsTouchedOrDirty('email')">
+                      <ng-container *ngIf="isTouchedOrDirtyField('email')">
+                        <ng-container *ngIf="isFieldValid('email')">
+                          <p class="{{paragraphInvalidClassValue}}"><span class="font-medium">Opss!</span>
+                            Email invalido!</p>
+                        </ng-container>
+                        <ng-container *ngIf="!isFieldValid('email')">
+                          <p class="{{paragraphValidClassValue}}"><span class="font-medium">Todo
+                              bien!</span>
+                            Email valido!</p>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                    <div class="mb-12 pb-1 pt-1 text-center">
+                      <button id="mainButton" (click)="onSubmit()"
+                        class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out">
+                        Registrar
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between pb-6 mx-6">
+                    <p class="mb-0 mr-2">¿Quieres más contenido?</p>
+                    <button id="mainButton2"
+                      class="mb-3 inline-block w-75 rounded px-12 pb-2 pt-2 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out">
+                      Explora el comercio
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div id="secondBanner"
+              class="relative flex items-center bg-indigo-900 rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none">
+              <ng-container *ngIf="hasBanners">
+                <img [src]="getMainImage(selectedPOS?.banners) || 'assets/img/bg.webp'" alt="Company Image"
+                  class="absolute inset-0 w-full h-full object-cover rounded-lg" style="z-index: 0;">
+                <div class="absolute inset-0 bg-black opacity-60 rounded-lg"></div>
+              </ng-container>
+              <div [ngClass]="{'over-bg': selectedPOS?.banners, 'solid-bg': !selectedPOS?.banners}"
+                class="absolute inset-0"></div>
+              <div class="px-4 py-6 text-white mx-6 p-12 relative z-10">
+                <h4 class="mb-6 text-xl font-semibold">
+                  {{selectedPOS?.name}}
+                </h4>
+                <p class="text-sm">
+                  {{selectedPOS?.description}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

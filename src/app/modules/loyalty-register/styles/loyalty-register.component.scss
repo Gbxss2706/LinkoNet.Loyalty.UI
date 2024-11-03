@@ -1,0 +1,11 @@
+@media screen and (max-width: 1440px) {
+    .login-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .login-inside{
+        padding: 0 !important;
+    }
+}
