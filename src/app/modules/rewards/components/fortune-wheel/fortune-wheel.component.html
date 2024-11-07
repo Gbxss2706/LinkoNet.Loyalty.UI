@@ -1,0 +1,26 @@
+<div class="roulette-container">
+    <div class="roulette" [style.transform]="'rotate(' + rotation + 'deg)'">
+        <div class="roulette-sections">
+            <div *ngFor="let item of items; let i = index" class="section"
+                [style.transform]="'rotate(' + (i * itemAngle) + 'deg)'">
+            </div>
+        </div>
+        <div *ngFor="let item of items; let i = index" class="roulette-item"
+            [style.transform]="'rotate(' + (i * itemAngle) + 'deg)'">
+            <div class="divider-line"></div>
+            <span class="item-text">
+                {{ item.text }}
+            </span>
+        </div>
+        <div class="center-circle">
+            <span class="center-text"></span>
+        </div>
+    </div>
+    <div class="arrow-indicator">
+        <svg width="30" height="40" viewBox="0 0 30 40" fill="none">
+          <path d="M15 0L30 20H0L15 0Z" fill="#6200EA"/>
+          <rect x="10" y="18" width="10" height="22" fill="#6200EA"/>
+        </svg>
+      </div>
+    <button (click)="spin()" [disabled]="isSpinning">Girar</button>
+</div>

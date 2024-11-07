@@ -35,6 +35,11 @@ const routes: Routes = [
     canActivate: [canActivateAuthGuard]
   },
   {
+    path:'rewards', 
+    loadChildren: () => import('./modules/rewards/rewards.module').then(m => m.RewardsModule),
+    canActivate: [canActivateAuthGuard]
+  },
+  {
     path:'**', 
     loadChildren: () => import('./shared-modules/shared-modules.module').then(m => m.SharedModulesModule),
   }

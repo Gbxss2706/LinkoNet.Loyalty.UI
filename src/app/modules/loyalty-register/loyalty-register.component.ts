@@ -24,6 +24,7 @@ export class LoyaltyRegisterComponent implements OnInit {
   private _message: any = null;
   public topColors: string[] = [];
   darknessThreshold: number = 40;
+  lightThreshold: number = 190;
   public readonly lableValidClassValue: string = "text-green-700 dark:text-green-500";
   public readonly lableInvalidClassValue: string = "text-red-700 dark:text-red-500";
   public readonly inputValidClassValue: string = "border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500 block dark:bg-gray-700 dark:border-green-500";
@@ -63,7 +64,7 @@ export class LoyaltyRegisterComponent implements OnInit {
     this.requestPermission();
     this.pointOfSaleService.getPOSByName(pointOfSaleId).subscribe(pointOfSale => {
       this.selectedPOS = pointOfSale;
-      this.hasBanners = this.selectedPOS.banners.length > 0;
+      this.hasBanners = this.selectedPOS.banners.length > 0 && !!this.selectedPOS.banners[0].multimedia.codificationBase64;
       if (pointOfSale.name == pointOfSaleId.toLowerCase()) {
         this.routerService.navigate(["**"]);
       }
@@ -162,7 +163,7 @@ export class LoyaltyRegisterComponent implements OnInit {
         const b = data[i + 2];
         const alpha = data[i + 3];
 
-        if (alpha > 0 && !this.isColorTooDark(r, g, b)) {
+        if (alpha > 0 && !this.isColorTooDark(r, g, b) && this.isColorTooLight(r, g, b)) {
           const color = `${r},${g},${b}`;
           colorCount[color] = (colorCount[color] || 0) + 1;
         }
@@ -226,6 +227,11 @@ export class LoyaltyRegisterComponent implements OnInit {
   isColorTooDark(r: number, g: number, b: number): boolean {
     return (r + g + b) < this.darknessThreshold;
   }
+
+  isColorTooLight(r: number, g: number, b: number): boolean {
+    return r < this.lightThreshold && g < this.lightThreshold && b < this.lightThreshold;
+  }
+
 
   public getMainImage(banners: Banner[] | undefined) {
     if (banners && banners.length > 0) {
