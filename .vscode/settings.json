@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "Media",
-        "rewards"
+        "rewards",
+        "shipment"
     ]
 }

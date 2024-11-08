@@ -27,6 +27,12 @@ export const generalConfig = {
                 pathIcon: 'M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z',
                 url: '/point-of-sale',
                 allowedUsers: [RolEnum.USER_ROL, RolEnum.ADMIN_ROL]
+            },
+            {
+                title: 'Envios',
+                pathIcon: 'M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V8h2.17l2 3H17z',
+                url: '/shipment',
+                allowedUsers: [RolEnum.USER_ROL, RolEnum.ADMIN_ROL]
             }
         ]
     },

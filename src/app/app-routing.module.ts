@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate: [canActivateAuthGuard]
   },
   {
+    path:'shipment', 
+    loadChildren: () => import('./modules/shipment/shipment.module').then(m => m.ShipmentModule),
+    canActivate: [canActivateAuthGuard]
+  },
+  {
     path:'**', 
     loadChildren: () => import('./shared-modules/shared-modules.module').then(m => m.SharedModulesModule),
   }
